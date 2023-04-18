@@ -20,6 +20,7 @@ export function Reducer(state, action){
             board[toRow][toCol] = board[fromRow][fromCol]
 
             board[fromRow][fromCol] = ''
+            
 
             return {
                 ...state,
