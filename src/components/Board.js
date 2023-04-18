@@ -38,6 +38,12 @@ const Board = () => {
             const rowDiff = Math.abs(toRow - fromRow);
             const colDiff = Math.abs(toCol - fromCol);
 
+            //Only One move forward
+            if(rowDiff > 2){
+                console.log('One Step forward')
+                return
+            }
+
             if (colDiff !== rowDiff) {
                 // The move is not diagonal
                 console.log('The move is diagonal')
