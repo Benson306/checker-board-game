@@ -40,22 +40,33 @@ const Board = () => {
 
             //Only One move forward
             if(rowDiff > 2){
-                console.log('One Step forward')
+                console.log('Two Step forward is allowed')
                 return
             }
 
             if (colDiff !== rowDiff) {
                 // The move is not diagonal
-                console.log('The move is diagonal')
+                console.log('The move is not diagonal')
                 return;
             }
 
             //Red to move forwad
             if(currentCell == 'R'){
                 if(fromRow > toRow){
-                    console.log("Backward movement")
+                    console.log("Backward movement Not allowed")
                     return
                 }
+            }
+
+
+            if(rowDiff == 2){ //jump
+                let jumpedRow = (fromRow + toRow) / 2;
+                let jumpedCol = (fromCol + toCol) / 2;
+
+                console.log(board[jumpedRow][jumpedCol]);
+
+                dispatch({ type: 'SCORE', payload: { row: jumpedRow, col: jumpedCol}})
+                //return
             }
 
             //Red to move forwad
@@ -129,6 +140,10 @@ const Board = () => {
                 </div>
             )
         }
+        <div>
+            <h3>Red Points : {state.redPoints} </h3>
+            <h3>Blue Points : {state.bluePoints} </h3>
+        </div>
     </div> );
 }
  
