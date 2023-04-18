@@ -40,7 +40,7 @@ const Board = () => {
 
             //Only One move forward
             if(rowDiff > 2){
-                console.log('Two Step forward is allowed')
+                console.log('More Than Two Step forward is Not allowed')
                 return
             }
 
@@ -86,26 +86,20 @@ const Board = () => {
     },[toRow])
 
 
-    function handleClick(row, col) {
-        const board = state.board;
-        const currentPiece = board[fromRow][fromCol]
+    function handleClick(row, col) {  
 
         if(clickedCount  == 2){ //Check if user has clicked the from cell and to cell only
             console.log('Out of play')
-            //clickedCount = 0;
-            //return
         }else if(clickedCount == 0){
             setFromRow(row);
             setFromCol(col)
 
-        }else if(clickedCount == 1){
-            //Ensure Moves are diagonal            
-                setToRow(row)
-                setToCol(col)
+        }else if(clickedCount == 1){          
+            setToRow(row)
+            setToCol(col)
         }
         
         setClickedCount( clicked => clicked + 1)
-
     }
 
     return ( <div className="board" style={{padding: '10px', alignSelf:'center'}}>
