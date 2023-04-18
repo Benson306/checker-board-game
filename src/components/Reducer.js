@@ -5,11 +5,13 @@ export const initialState = {
         ['R','','R','','R','', 'R',''],
         ['','','','','','', '',''],
         ['','','','','','', '',''],
-        ['B','','B','','B','', 'B',''],
         ['','B','','B','','B', '','B'],
-        ['B','','B','','B','', 'B','']
+        ['B','','B','','B','', 'B',''],
+        ['','B','','B','','B', '','B']
     ],
-    currentPlayer: 'R'  
+    currentPlayer: 'R',
+    redPoints: 0,
+    bluePoint: 0
 }
 
 export function Reducer(state, action){
@@ -20,12 +22,14 @@ export function Reducer(state, action){
             board[toRow][toCol] = board[fromRow][fromCol]
 
             board[fromRow][fromCol] = ''
+
+            //console.log( fromRow, fromCol, toRow, toCol )
             
 
             return {
                 ...state,
                 board,
-                currentPlayer: state.currentPlayer === 'R' ? 'B' : 'R',
+                currentPlayer: state.currentPlayer === 'R' ? 'B' : 'R'
               };
         default:
             return state;
