@@ -9,18 +9,18 @@ export const initialState = {
         ['','B','','B','','B', '','B'],
         ['B','','B','','B','', 'B','']
     ],
-    currentPlayer: 'R',
-
-    
+    currentPlayer: 'R'  
 }
 
 export function Reducer(state, action){
     switch(action.type){
         case 'MOVE':
             const { fromRow, fromCol, toRow, toCol } = action.payload;
-            const board = [...state.board];
+            const board = [...state.board];           
             board[toRow][toCol] = board[fromRow][fromCol]
+
             board[fromRow][fromCol] = ''
+
             return {
                 ...state,
                 board,

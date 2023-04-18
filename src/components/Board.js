@@ -14,6 +14,13 @@ const Board = () => {
 
     const [clickedCount, setClickedCount] = useState(0);
 
+    useEffect(()=>{
+        
+        if(toRow){
+            dispatch({ type: 'MOVE', payload: { fromRow, fromCol, toRow, toCol } });
+        }
+    },[toRow])
+
 
     function handleClick(row, col) {
         // Logic for checking if the clicked square is a valid move goes here
@@ -31,10 +38,6 @@ const Board = () => {
 
             setToRow(row)
             setToCol(col)
-
-            console.log(toRow, toCol)
-
-            dispatch({ type: 'MOVE', payload: { fromRow, fromCol, toRow, toCol } });
         }
         
         setClickedCount( clicked => clicked + 1)
