@@ -61,18 +61,22 @@ const Board = () => {
 
             if(rowDiff == 2){ //jump
                 let jumpedRow = (fromRow + toRow) / 2;
-                let jumpedCol = (fromCol + toCol) / 2;
-
-                console.log(board[jumpedRow][jumpedCol]);
+                let jumpedCol = (fromCol + toCol) / 2; 
+                
+                //Restrict jumping your own piece
+                if(currentCell == board[jumpedRow][jumpedCol]){
+                    console.log('You cannot jump your own piece')
+                    return
+                }
 
                 dispatch({ type: 'SCORE', payload: { row: jumpedRow, col: jumpedCol}})
                 //return
             }
 
-            //Red to move forwad
+            //Manage backward Movement
             if(currentCell == 'B'){
                 if(fromRow < toRow){
-                    console.log("Backward movement")
+                    console.log("Backward movement Not allowed")
                     return
                 }
             }
@@ -83,12 +87,8 @@ const Board = () => {
 
 
     function handleClick(row, col) {
-        console.log(row,col)
-        // Logic for checking if the clicked square is a valid move goes here
         const board = state.board;
         const currentPiece = board[fromRow][fromCol]
-
-        
 
         if(clickedCount  == 2){ //Check if user has clicked the from cell and to cell only
             console.log('Out of play')
@@ -99,23 +99,12 @@ const Board = () => {
             setFromCol(col)
 
         }else if(clickedCount == 1){
-
-            //Check Valididity of moves
-
-            //Ensure Moves are diagonal
-
-            
-            
+            //Ensure Moves are diagonal            
                 setToRow(row)
                 setToCol(col)
-            
-
-            
         }
         
         setClickedCount( clicked => clicked + 1)
-
-        console.log(currentPiece)
 
     }
 
