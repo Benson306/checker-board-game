@@ -111,11 +111,11 @@ const Board = () => {
                 { row.map(
                         (col, colIndex) => {
                             if(col === 'R'){
-                                return <div onClick={() => handleClick(rowIndex, colIndex)} style={{backgroundColor:'red', padding:'10px', border:'1px solid black', borderWidth:1, width:15, height:15}}>{col}</div>
+                                return <div onClick={() => handleClick(rowIndex, colIndex)} style={{backgroundColor:'', padding:'10px', display:'flex', alignItems:'center', justifyContent:'center' ,border: '1px solid black', borderWidth:1, width:40, height:40}}><img src={require('../assets/red-cap.png')} width={40} height={40} object-fit="contain" /></div>
                             }else if(col === 'B'){
-                                return <div onClick={() => handleClick(rowIndex, colIndex)} style={{backgroundColor:'blue', padding:'10px', border:'1px solid black', borderWidth:1, width:15, height:15}}>{col}</div>
+                                return  <div onClick={() => handleClick(rowIndex, colIndex)} style={{backgroundColor:'', padding:'10px', display:'flex', alignItems:'center', justifyContent:'center' ,border: '1px solid black', borderWidth:1, width:40, height:40}}><img src={require('../assets/bottle-cap.png')} width={40} height={40} object-fit="contain" /></div>
                             }else if(col === ''){
-                                return <div onClick={() => handleClick(rowIndex, colIndex)} style={{backgroundColor:'', padding:'10px', border:'1px solid black', borderWidth:1, width:15, height:15}}>{col}</div>
+                                return <div onClick={() => handleClick(rowIndex, colIndex)} style={{backgroundColor:'', padding:'10px', border:'1px solid black', borderWidth:1, width:40, height:40}}>{col}</div>
                             }
                         }
                         )
